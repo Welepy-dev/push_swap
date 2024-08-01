@@ -44,7 +44,7 @@ static int	split_words(char **result, char const *s, char c, int word)
 			result[word] = malloc(sizeof(char) * (end_cur - start_cur + 2));
 			if (!result[word])
 			{
-				while (word++)
+				while (word--)
 					free(result[word]);
 				return (0);
 			}
@@ -54,7 +54,7 @@ static int	split_words(char **result, char const *s, char c, int word)
 		end_cur++;
 	}
 	result[word] = 0;
-	exit(1);
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)

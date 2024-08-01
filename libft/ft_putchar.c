@@ -6,13 +6,14 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 13:39:19 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/07/30 13:40:36 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:40:31 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }

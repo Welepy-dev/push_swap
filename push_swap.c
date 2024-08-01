@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:51:26 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/07/31 15:03:31 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:27:13 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,45 +16,15 @@ int	main(int ac, char **av)
 {
 	t_stack		stack_a;
 	t_stack		stack_b;
-	int			i, j;
-	char	**matrix;
+	int			i;
 
 	if (ac == 2)
-	{
-		matrix = ft_split(av[1], ' ');
-		i = 0;
-		j = 0
-		while (matrix[i] != NULL)
-			i++;
-		while (i > 0)
-		{
-			push(&stack_a, ft_atoi(matrix[i - 1]), "\0");
-			i--;
-		}
-		while(matrix[j] != NULL)
-		{
-			free(matrix[j]);
-			j++;
-		}
-	}
+		matrix_init(&stack_a, &stack_b, av, ac);
 	else
-	{
-		i = ac - 1;
-		stack_a.capacity = ac - 1;
-		stack_b.capacity = ac - 1;
-		stack_b.top = -1;
-		stack_a.top = -1;
-		stack_b.collection = (int *)malloc(stack_b.capacity * sizeof(int));
-		stack_a.collection = (int *)malloc(stack_a.capacity * sizeof(int));
-		if (stack_a.collection == NULL || stack_b.collection == NULL)
-			printError();
-		while (i > 0)
-		{
-			push(&stack_a, ft_atoi(av[i]), "\0");
-			i--;
-		}
-	}
-	printf("%d", stack_a.collection[stack_a.top]);
+		allocator_init(&stack_a, &stack_b, ac, av);
+	i = stack_a.capacity;
+	while (i > 0)
+		ft_printf("%d\n", stack_a.collection[--i]);
 	free(stack_a.collection);
 	free(stack_b.collection);
 	return (0);

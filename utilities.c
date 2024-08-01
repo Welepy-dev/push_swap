@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:28:12 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/07/31 15:00:42 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:09:56 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ bool	is_empty(t_stack *stack)
 int	pop(t_stack *stack)
 {
 	if (is_empty(stack))
-		printError();
-	return stack->collection[stack->top--];
+		print_error();
+	return (stack->collection[stack->top--]);
 }
 
-void	printError(void)
+void	print_error(void)
 {
-	printf("Error: Not enough elements to swap\n");
-        exit(1);
+	ft_printf("Error.\n");
+	exit(1);
 }

@@ -6,27 +6,27 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 13:41:18 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/07/30 16:16:52 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:43:39 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putstr(const char *s)
+int	ft_putstr(char *s)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
+	if (!s)
 	{
 		write(1, "(null)", 6);
 		i += 6;
 	}
 	else
 	{
-		while (str[i] != '\0')
+		while (s[i] != '\0')
 		{
-			ft_putchar(str[i]);
+			ft_putchar(s[i]);
 			i++;
 		}
 	}
