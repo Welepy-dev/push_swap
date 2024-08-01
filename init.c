@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:17:25 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/01 16:20:05 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:40:05 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	matrix_init(t_stack *stack_a, t_stack *stack_b, char **av, int ac)
 	int		i;
 
 	i = 0;
-	matrix = ft_split(av[1], ' ');	//here it is like this "12 32 43 54"
-	while (matrix[i] != NULL)	
-		i++;		
-	stack_a->capacity = i;		
+	matrix = ft_split(av[1], ' ');
+	while (matrix[i] != NULL)
+		i++;
+	stack_a->capacity = i;
 	stack_b->capacity = i;
 	stack_a->top = -1;
 	stack_b->top = -1;
