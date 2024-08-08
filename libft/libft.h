@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 14:57:18 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/05 18:38:21 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:44:54 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define LIBFT_H
 
 # include "./printf/ft_printf.h"
+# include "./ft_strtol_utils/ft_strtol_utils.h"
 # include "../push_swap/push_swap.h"
+
 # include <stdbool.h>
 # include <unistd.h>
 # include <stddef.h>
@@ -38,6 +40,7 @@ int		ft_putnbr(int n);
 int		ft_isspace(int c);
 int		ft_isalpha(int c);
 int		ft_tolower(int c);
+int		ft_isupper(int c);
 
 long	ft_strtol(const char *nptr, char **endptr, int base);
 

@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: :2024/05/29 19:23:04 by marcsilv          #+#    #+#            */
-/*   Updated: 2024/08/05 18:38:36 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:22:06 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define FT_PRINTF_H
 
 # include "../libft.h"
+# include "../ft_strtol_utils/ft_strtol_utils.h"
 # include "../../push_swap/push_swap.h"
+
 # include <stdbool.h>
 # include <unistd.h>
 # include <stddef.h>

@@ -6,15 +6,16 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:28:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/05 18:38:08 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:10:07 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/printf/ft_printf.h"
 # include "../libft/libft.h"
+# include "../libft/ft_strtol_utils/ft_strtol_utils.h"
+# include "../libft/printf/ft_printf.h"
 
 # include <stdbool.h>
 # include <unistd.h>
