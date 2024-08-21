@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:28:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/21 12:01:34 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:21:39 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../libft/printf/ft_printf.h"
+# include "./hedge_cases/matrix_hedge_cases/matrix_hedge_cases.h"
 
 # include <stdbool.h>
 # include <unistd.h>
@@ -47,7 +48,10 @@ void	insert(t_stack *stack, int item);
 void	reverse_both(t_stack *stack_a, t_stack *stack_b);
 void	reverse_reverse_both(t_stack *stack_a, t_stack *stack_b);
 void	allocator_init(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
-void	init_hedge_cases(char **matrix);
+void	validate_string(char *str);
+void	init_check_matrix(char **matrix);
+void	validate_number_range(long num);
+void	check_duplicates(char **matrix);
 
 int		pop(t_stack *stack);
 int		main(int ac, char **av);

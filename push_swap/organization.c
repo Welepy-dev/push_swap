@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:53:36 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/03 17:12:36 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:16:41 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,11 @@ int	push(t_stack *src, t_stack *dst, char *op)
 	if (*op)
 		ft_printf("%s\n", op);
 	return (0);
+}
+
+void	insert(t_stack *stack, int item)
+{
+	if (is_full(stack))
+		print_error();
+	stack->collection[++stack->top] = item;
 }

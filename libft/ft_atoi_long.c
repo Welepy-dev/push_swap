@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 15:18:05 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/20 15:18:22 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:24:04 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ long	ft_atoi_long(const char *nptr)
 	int		count;
 	long	numb;
 	int		low;
+
 	count = 0;
 	low = 1;
 	numb = 0;
