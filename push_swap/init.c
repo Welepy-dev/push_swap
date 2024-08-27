@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:17:25 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/21 15:22:47 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:58:00 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	allocator_init(t_stack *stack_a, t_stack *stack_b, int ac, char **av)
 	stack_b->collection = (int *)malloc(stack_b->capacity * sizeof(int));
 	if (stack_a->collection == NULL || stack_b->collection == NULL)
 		print_error();
-	init_check_matrix(av);
+	init_check_allocator(av);
 	while (i > 0)
 	{
 		insert(stack_a, ft_atoi(av[i]));

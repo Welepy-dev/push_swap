@@ -6,16 +6,18 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:28:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/21 15:21:39 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/23 14:20:55 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "./sort/sort.h"
 # include "../libft/libft.h"
 # include "../libft/printf/ft_printf.h"
-# include "./hedge_cases/matrix_hedge_cases/matrix_hedge_cases.h"
+# include "./hedge_cases/hedge_cases.h"
+
 
 # include <stdbool.h>
 # include <unistd.h>
@@ -50,6 +52,7 @@ void	reverse_reverse_both(t_stack *stack_a, t_stack *stack_b);
 void	allocator_init(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
 void	validate_string(char *str);
 void	init_check_matrix(char **matrix);
+void	init_check_allocator(char **matrix);
 void	validate_number_range(long num);
 void	check_duplicates(char **matrix);
 

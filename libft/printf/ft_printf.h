@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: :2024/05/29 19:23:04 by marcsilv          #+#    #+#            */
-/*   Updated: 2024/08/21 14:26:22 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/23 14:18:51 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define FT_PRINTF_H
 
 # include "../libft.h"
+# include "../../push_swap/sort/sort.h"
 # include "../../push_swap/push_swap.h"
-# include "../../push_swap/hedge_cases/matrix_hedge_cases/matrix_hedge_cases.h"
+# include "../../push_swap/hedge_cases/hedge_cases.h"
+
 
 # include <stdbool.h>
 # include <unistd.h>

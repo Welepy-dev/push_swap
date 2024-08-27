@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:51:26 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/03 15:45:52 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:38:23 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 	i = stack_a.capacity;
 	while (i > 0)
 		ft_printf("%d ", stack_a.collection[--i]);
+	ft_printf("\n");
 	free(stack_a.collection);
 	free(stack_b.collection);
 	return (0);
