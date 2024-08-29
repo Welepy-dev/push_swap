@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:28:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/23 14:20:55 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:27:36 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../libft/libft.h"
 # include "../libft/printf/ft_printf.h"
 # include "./hedge_cases/hedge_cases.h"
-
 
 # include <stdbool.h>
 # include <unistd.h>
