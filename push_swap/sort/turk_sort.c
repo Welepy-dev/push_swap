@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:30:57 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/30 12:29:04 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/08/30 17:29:06 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,33 @@ void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 	cheapest_operation_index = find_cheapest_operation_index(stack_a, stack_b);
 }
 
+void	send_to_b(t_stack *stack_a, t_stack *stack_b, int cheapest_operation_index)
+{
+	int	stack_a_steps_up;
+	int	stack_a_steps_down;
+	int	stack_b_steps_up;
+	int	stack_b_steps_down;
+	int	stack_b_index;
 
+	stack_a_steps_up = 0;
+	stack_a_steps_down = 0;
+	stack_b_steps_up = 0;
+	stack_b_steps_down = 0;
+	if (stack_a->collection[cheapest_operation_index] == stack_a->collection[top])
+	{
+		//encontrar o numero da stack_b ideal e metelo no topo
+		//depois meter o stack_a[top] na stack_b
+		//fazer o resto com os outros 2 ifs
+	}
+	/*else if (cheapest_operation_index >= (stack_a->top / 2))
+	{
+
+	}
+	else if (cheapest_operation_index < (stack_a->top / 2))
+	{
+
+	}*/
+}
 
 int	find_cheapest_operation_index(t_stack *stack_a, t_stack *stack_b)
 {
@@ -47,36 +73,51 @@ int	find_cheapest_operation_index(t_stack *stack_a, t_stack *stack_b)
 	return (cheapest_operation_index);
 }
 
+int	cost_up_counter(t_stack *stack, int stack_number_index)
+{
+	int	steps_up;
+
+	steps_up = 0;
+	while (stack_number_index <= stack->top)
+	{
+		steps_up++;
+		stack_number_index++;
+	}
+	return (steps_up);
+}
+
+int	cost_down_counter(t_stack *stack, int stack_number_index)
+{
+	int	steps_down;
+
+	steps_down = 0;
+	while (stack_number_index >= 0)
+	{
+		steps_down++;
+		stack_number_index--;
+	}
+	return (steps_down);
+}
+
 int	cost_of_operation(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
 {
 	int	placeholder;
-	int	cost_up_counter;
-	int	cost_down_counter;
+	int	steps_up;
+	int	steps_down;
 	int	prime_cheapest;
 
-	cost_up_counter = 0;
-	cost_down_counter = 0;
+	steps_up = 0;
+	steps_down = 0;
 	placeholder = find_placeholder(stack_a, stack_b, stack_a_index);
 	if (placeholder >= stack_b->top / 2)
-	{
-		while (placeholder <= stack_b->top)
-		{
-			cost_up_counter++;
-			placeholder++;
-		}
-	}
+		steps_up = cost_up_counter(stack_b, placeholder);
 	else
-	{
-		while (placeholder >= 0)
-		{
-			cost_down_counter++;
-			placeholder--;
-		}
-	}
-	if (cost_up_counter > cost_down_counter)
-		prime_cheapest = cost_up_counter + (stack_a->top - stack_a_index + 1);
+		steps_down = cost_down_counter(stack_b, placeholder);
+
+	if (steps_up > steps_down)
+		prime_cheapest = steps_up + (stack_a->top - stack_a_index + 1);
 	else
-		prime_cheapest = cost_down_counter + (stack_a->top - stack_a_index + 1);
+		prime_cheapest = steps_down + (stack_a->top - stack_a_index + 1);
 	return (prime_cheapest);
 }
 
