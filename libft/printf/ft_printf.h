@@ -18,7 +18,6 @@
 # include "../../push_swap/push_swap.h"
 # include "../../push_swap/hedge_cases/hedge_cases.h"
 
-
 # include <stdbool.h>
 # include <unistd.h>
 # include <stddef.h>

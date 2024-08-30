@@ -14,15 +14,25 @@
 
 void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 {
+	int	cheapest_operation_index;
+
+	push(stack_a, stack_b, "pa");
+	push(stack_a, stack_b, "pa");
+	cheapest_operation_index = find_cheapest_operation_index(stack_a, stack_b);
+}
+
+
+
+int	find_cheapest_operation_index(t_stack *stack_a, t_stack *stack_b)
+{
 	int	prime_cheapest;
 	int	next_cheapest;
 	int	cheapest_operation_index;
 	int	k;
 
-	push(stack_a, stack_b, "pa");
-	push(stack_a, stack_b, "pa");
 	k = stack_a->top;
 	prime_cheapest = cost_of_operation(stack_a, stack_b, k);
+	cheapest_operation_index = k;
 	k--;
 	while (k >= 0)
 	{
@@ -34,20 +44,20 @@ void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 		}
 		k--;
 	}
-
+	return (cheapest_operation_index);
 }
 
 int	cost_of_operation(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
 {
 	int	placeholder;
-	int	cost_up_counter;									//maybe ill need these values later
+	int	cost_up_counter;
 	int	cost_down_counter;
 	int	prime_cheapest;
 
 	cost_up_counter = 0;
 	cost_down_counter = 0;
 	placeholder = find_placeholder(stack_a, stack_b, stack_a_index);
-	if (placeholder + 1 >= stack_b->capacity / 2)
+	if (placeholder >= stack_b->top / 2)
 	{
 		while (placeholder <= stack_b->top)
 		{
@@ -64,9 +74,9 @@ int	cost_of_operation(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
 		}
 	}
 	if (cost_up_counter > cost_down_counter)
-		prime_cheapest = cost_up_counter + 1;
+		prime_cheapest = cost_up_counter + (stack_a->top - stack_a_index + 1);
 	else
-		prime_cheapest = cost_down_counter + 1;
+		prime_cheapest = cost_down_counter + (stack_a->top - stack_a_index + 1);
 	return (prime_cheapest);
 }
 
@@ -101,6 +111,5 @@ int	find_placeholder(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
 		}
 		i--;
 	}
-	return (placeholder);						//what if prime_diff is the smallest one
+	return (placeholder);
 }
-									//what if there is no numbers smaller than the one on stack_a
