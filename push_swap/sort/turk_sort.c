@@ -6,7 +6,7 @@
 /*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:30:57 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/30 17:29:06 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/03 15:55:59 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,42 @@ void	send_to_b(t_stack *stack_a, t_stack *stack_b, int cheapest_operation_index)
 	int	stack_b_steps_up;
 	int	stack_b_steps_down;
 	int	stack_b_index;
+	int	stack_b_placeholder;
+	char *direction;
 
 	stack_a_steps_up = 0;
 	stack_a_steps_down = 0;
 	stack_b_steps_up = 0;
 	stack_b_steps_down = 0;
-	if (stack_a->collection[cheapest_operation_index] == stack_a->collection[top])
+	if (stack_a->collection[cheapest_operation_index] == stack_a->collection[stack_a->top])
 	{
-		//encontrar o numero da stack_b ideal e metelo no topo
+		stack_b_placeholder = find_placeholder(stack_a, stack_b, stack_a->top);
+		direction = find_direction(stack_b, stack_b_placeholder);
+		if (direction == "up")
+		{
+			while (1)
+			 {
+				1 + 1;
+			 }
+						
 		//depois meter o stack_a[top] na stack_b
 		//fazer o resto com os outros 2 ifs
+		} 
 	}
-	/*else if (cheapest_operation_index >= (stack_a->top / 2))
+	else if (cheapest_operation_index >= (stack_a->top / 2))
 	{
 
 	}
 	else if (cheapest_operation_index < (stack_a->top / 2))
+
 	{
 
-	}*/
+	}
 }
+
+/*void	b_number_top(t_stack stack, int ideal_number)
+{*/
+
 
 int	find_cheapest_operation_index(t_stack *stack_a, t_stack *stack_b)
 {
@@ -96,7 +112,7 @@ int	cost_down_counter(t_stack *stack, int stack_number_index)
 		steps_down++;
 		stack_number_index--;
 	}
-	return (steps_down);
+	return (steps_down + 1);
 }
 
 int	cost_of_operation(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
@@ -113,7 +129,6 @@ int	cost_of_operation(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
 		steps_up = cost_up_counter(stack_b, placeholder);
 	else
 		steps_down = cost_down_counter(stack_b, placeholder);
-
 	if (steps_up > steps_down)
 		prime_cheapest = steps_up + (stack_a->top - stack_a_index + 1);
 	else
@@ -153,4 +168,15 @@ int	find_placeholder(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
 		i--;
 	}
 	return (placeholder);
+}
+
+char	*find_direction(t_stack *stack, int number_position)
+{
+	char *direction;
+
+	if (number_position >= stack->top / 2)
+		direction = "up";
+	else
+		direction = "down";
+	return (direction);
 }
