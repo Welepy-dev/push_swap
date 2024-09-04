@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:30:57 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 15:53:00 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:49:50 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 
 	push(stack_a, stack_b, "pb");
 	push(stack_a, stack_b, "pb");
-	cheapest_operation_index = find_cheapest_operation_index(stack_a, stack_b);
+	cheapest_operation_index = find_cheap_operation_index(stack_a, stack_b);
 	while (stack_a->top >= 0)
 	{
-		send_to_b(stack_a, stack_b, cheapest_operation_index);
-		cheapest_operation_index = find_cheapest_operation_index(stack_a, stack_b);
+		a_to_b(stack_a, stack_b, cheapest_operation_index);
+		cheapest_operation_index = find_cheap_operation_index(stack_a, stack_b);
 		stack_a->top--;
 	}
 	test_index = stack_b->top;
@@ -34,27 +34,26 @@ void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void	send_to_b(t_stack *stack_a, t_stack *stack_b, int cheapest_operation_index)
+void	a_to_b(t_stack *stack_a, t_stack *stack_b, int cheap_index)
 {
-	int	stack_a_steps_up;
-	int	stack_a_steps_down;
-	int	stack_b_placeholder;
-	char *direction;
+	int		stack_a_steps_up;
+	int		stack_a_steps_down;
+	int		stack_b_placeholder;
+	char	*direction;
 
 	stack_a_steps_up = 0;
 	stack_a_steps_down = 0;
-	if (stack_a->collection[cheapest_operation_index] == stack_a->collection[stack_a->top])
+	if (stack_a->collection[cheap_index] == stack_a->collection[stack_a->top])
 	{
 		stack_b_placeholder = find_placeholder(stack_a, stack_b, stack_a->top);
 		direction = find_direction(stack_b, stack_b_placeholder);
 		if (ft_strcmp(direction, "up") == 0)
 		{
 			while (stack_b->top >= stack_b_placeholder)
-			 {
+			{
 				rotate(stack_b, "rb");
 				stack_b_placeholder++;
-			 }
-		
+			}
 		}
 		else if (ft_strcmp(direction, "down") == 0)
 		{
@@ -66,53 +65,53 @@ void	send_to_b(t_stack *stack_a, t_stack *stack_b, int cheapest_operation_index)
 		}
 		push(stack_a, stack_b, "pb");
 	}
-	else if (cheapest_operation_index >= (stack_a->top / 2))
+	else if (cheap_index >= (stack_a->top / 2))
 	{
-		stack_a_steps_up = cost_up_counter(stack_a, cheapest_operation_index);
-		stack_a_steps_down = cost_down_counter(stack_a, cheapest_operation_index);
+		stack_a_steps_up = cost_up_counter(stack_a, cheap_index);
+		stack_a_steps_down = cost_down_counter(stack_a, cheap_index);
 		if (stack_a_steps_up > stack_a_steps_down)
 		{
-			while (cheapest_operation_index <= stack_a->top)
+			while (cheap_index <= stack_a->top)
 			{
 				rotate(stack_a, "ra");
-				cheapest_operation_index++;
+				cheap_index++;
 			}
 		}
 		else
 		{
-			while (cheapest_operation_index >= 0)
+			while (cheap_index >= 0)
 			{
 				reverse_rotate(stack_a, "rra");
-				cheapest_operation_index--;
+				cheap_index--;
 			}
 		}
 		push(stack_a, stack_b, "pb");
 	}
 	else
 	{
-		stack_a_steps_up = cost_up_counter(stack_a, cheapest_operation_index);
-		stack_a_steps_down = cost_down_counter(stack_a, cheapest_operation_index);
+		stack_a_steps_up = cost_up_counter(stack_a, cheap_index);
+		stack_a_steps_down = cost_down_counter(stack_a, cheap_index);
 		if (stack_a_steps_up > stack_a_steps_down)
 		{
-			while (cheapest_operation_index <= stack_a->top)
+			while (cheap_index <= stack_a->top)
 			{
 				rotate(stack_a, "ra");
-				cheapest_operation_index++;
+				cheap_index++;
 			}
 		}
 		else
 		{
-			while (cheapest_operation_index >= 0)
+			while (cheap_index >= 0)
 			{
 				reverse_rotate(stack_a, "rra");
-				cheapest_operation_index--;
+				cheap_index--;
 			}
 		}
 		push(stack_a, stack_b, "pb");
 	}
 }
 
-int	find_cheapest_operation_index(t_stack *stack_a, t_stack *stack_b)
+int	find_cheap_operation_index(t_stack *stack_a, t_stack *stack_b)
 {
 	int	prime_cheapest;
 	int	next_cheapest;
@@ -162,7 +161,7 @@ int	cost_down_counter(t_stack *stack, int stack_number_index)
 	return (steps_down + 1);
 }
 
-int	cost_of_operation(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
+int	cost_of_operation(t_stack *stack_a, t_stack *stack_b, int s_a_index)
 {
 	int	placeholder;
 	int	steps_up;
@@ -171,45 +170,45 @@ int	cost_of_operation(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
 
 	steps_up = 0;
 	steps_down = 0;
-	placeholder = find_placeholder(stack_a, stack_b, stack_a_index);
+	placeholder = find_placeholder(stack_a, stack_b, s_a_index);
 	if (placeholder >= stack_b->top / 2)
 		steps_up = cost_up_counter(stack_b, placeholder);
 	else
 		steps_down = cost_down_counter(stack_b, placeholder);
 	if (steps_up > steps_down)
-		prime_cheapest = steps_up + (stack_a->top - stack_a_index + 1);
+		prime_cheapest = steps_up + (stack_a->top - s_a_index + 1);
 	else
-		prime_cheapest = steps_down + (stack_a->top - stack_a_index + 1);
+		prime_cheapest = steps_down + (stack_a->top - s_a_index + 1);
 	return (prime_cheapest);
 }
 
-int	find_placeholder(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
+int	find_placeholder(t_stack *stack_a, t_stack *stack_b, int s_a_index)
 {
 	int	i;
-	int	prime_diff;
+	int	p_diff;
 	int	diff;
 	int	placeholder;
 
-	prime_diff = INT_MAX;
+	p_diff = INT_MAX;
 	diff = 0;
 	placeholder = 0;
 	i = stack_b->top;
 	while (i >= 0)
 	{
-		if (stack_a->collection[stack_a_index] > stack_b->collection[i])
+		if (stack_a->collection[s_a_index] > stack_b->collection[i])
 		{
-			prime_diff = stack_a->collection[stack_a_index] - stack_b->collection[i];
+			p_diff = stack_a->collection[s_a_index] - stack_b->collection[i];
 			break ;
 		}
 		i--;
 	}
 	while (i >= 0)
 	{
-		if (stack_a->collection[stack_a_index] > stack_b->collection[i])
-			diff = stack_a->collection[stack_a_index] - stack_b->collection[i];
-		if (diff < prime_diff)
+		if (stack_a->collection[s_a_index] > stack_b->collection[i])
+			diff = stack_a->collection[s_a_index] - stack_b->collection[i];
+		if (diff < p_diff)
 		{
-			prime_diff = diff;
+			p_diff = diff;
 			placeholder = i;
 		}
 		i--;
@@ -219,7 +218,7 @@ int	find_placeholder(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
 
 char	*find_direction(t_stack *stack, int number_position)
 {
-	char *direction;
+	char	*direction;
 
 	if (number_position >= stack->top / 2)
 		direction = "up";

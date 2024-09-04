@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:28:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 15:49:13 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:51:52 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ void	init_check_matrix(char **matrix);
 void	init_check_allocator(char **matrix);
 void	validate_number_range(long num);
 void	check_duplicates(char **matrix);
-void    tiny_sort(t_stack *stack, char stack_name);
-void    turk_sort(t_stack *stack_a, t_stack *stack_b);
-void    send_to_b(t_stack *stack_a, t_stack *stack_b, int cheapest_operation_index);
-void    choose_sort(t_stack *stack_a, t_stack *stack_b);
-void    super_tiny_sort(t_stack *stack, char stack_name);
+void	tiny_sort(t_stack *stack, char stack_name);
+void	turk_sort(t_stack *stack_a, t_stack *stack_b);
+void	a_to_b(t_stack *stack_a, t_stack *stack_b, int cheap_index);
+void	choose_sort(t_stack *stack_a, t_stack *stack_b);
+void	super_tiny_sort(t_stack *stack, char stack_name);
 
-int		find_cheapest_operation_index(t_stack *stack_a, t_stack *stack_b);
-int		cost_of_operation(t_stack *stack_a, t_stack *stack_b, int stack_a_index);
+int		find_cheap_operation_index(t_stack *stack_a, t_stack *stack_b);
+int		cost_of_operation(t_stack *stack_a, t_stack *stack_b, int s_a_index);
 int		cost_down_counter(t_stack *stack, int stack_number_index);
 int		cost_up_counter(t_stack *stack, int stack_number_index);
-int		find_placeholder(t_stack *stack_a, t_stack *stack_b, int stack_a_index);
+int		find_placeholder(t_stack *stack_a, t_stack *stack_b, int s_a_index);
 int		pop(t_stack *stack);
 int		main(int ac, char **av);
 int		push(t_stack *src, t_stack *dst, char *op);
@@ -71,6 +71,6 @@ int		swap_both(t_stack *stack_a, t_stack *stack_b);
 int		highest_number_index(t_stack *stack);
 int		swap(t_stack *stack, char *op);
 
-char    *find_direction(t_stack *stack, int number_position);
+char	*find_direction(t_stack *stack, int number_position);
 
 #endif

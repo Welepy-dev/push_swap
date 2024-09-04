@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:28:12 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 14:31:28 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:57:57 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,23 @@ void	print_error(void)
 	exit(1);
 }
 
-int     highest_number_index(t_stack *stack)
+int	highest_number_index(t_stack *stack)
 {
-        int i;
-        int highest_number;
-        int highest_number_index;
+	int	i;
+	int	highest_number;
+	int	highest_number_index;
 
-        i = 0;
-        highest_number = INT_MIN;
-        highest_number_index = 0;
-        while (i <= stack->top)
-        {
-                if (stack->collection[i] > highest_number)
-                {
-                        highest_number = stack->collection[i];
-                        highest_number_index = i;
-                }
-                i++;
-        }
-        return (highest_number_index);
+	i = 0;
+	highest_number = INT_MIN;
+	highest_number_index = 0;
+	while (i <= stack->top)
+	{
+		if (stack->collection[i] > highest_number)
+		{
+			highest_number = stack->collection[i];
+			highest_number_index = i;
+		}
+		i++;
+	}
+	return (highest_number_index);
 }
