@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 14:57:18 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/23 14:19:18 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:21:19 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "./printf/ft_printf.h"
 # include "../push_swap/push_swap.h"
-# include "../push_swap/sort/sort.h"
 # include "../push_swap/hedge_cases/hedge_cases.h"
 
 # include <stdbool.h>

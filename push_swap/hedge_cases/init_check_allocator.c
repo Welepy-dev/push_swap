@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_check_allocator.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 14:30:58 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/22 14:09:07 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:32:18 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,17 @@ void	validate_allocator_string(char *str)
 
 	l = 0;
 	if ((str[l] == '+' || str[l] == '-') && str[l + 1] == '\0')
+	{
+		ft_printf("Error 12\n");
 		print_error();
+	}
 	while (str[l] != '\0')
 	{
 		if ((str[l] == '+' || str[l] == '-') && !ft_isdigit(str[l + 1]))
+		{
+			ft_printf("Error 13\n");
 			print_error();
+		}
 		l++;
 	}
 }

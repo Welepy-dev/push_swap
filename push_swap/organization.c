@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   organization.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:53:36 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/21 14:16:41 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:38:57 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	swap(t_stack *stack, char *op)
 	int	temp2;
 
 	if (stack->top < 1)
+	{
+		ft_printf("Error 3\n");
 		print_error();
+	}
 	temp1 = pop(stack);
 	temp2 = pop(stack);
 	insert(stack, temp1);
@@ -40,8 +43,11 @@ int	push(t_stack *src, t_stack *dst, char *op)
 {
 	int	temp;
 
-	if (is_full(src))
+	if (is_full(dst))
+	{
+		ft_printf("Error 4\n");
 		print_error();
+	}
 	temp = pop(src);
 	dst->collection[++dst->top] = temp;
 	if (*op)
@@ -52,6 +58,9 @@ int	push(t_stack *src, t_stack *dst, char *op)
 void	insert(t_stack *stack, int item)
 {
 	if (is_full(stack))
+	{
+		ft_printf("Error 5\n");
 		print_error();
+	}
 	stack->collection[++stack->top] = item;
 }

@@ -3,67 +3,114 @@
 /*                                                        :::      ::::::::   */
 /*   turk_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:30:57 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/03 15:55:59 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:53:00 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sort.h"
+#include "push_swap.h"
 
 void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	cheapest_operation_index;
+	int	test_index;
 
-	push(stack_a, stack_b, "pa");
-	push(stack_a, stack_b, "pa");
+	push(stack_a, stack_b, "pb");
+	push(stack_a, stack_b, "pb");
 	cheapest_operation_index = find_cheapest_operation_index(stack_a, stack_b);
+	while (stack_a->top >= 0)
+	{
+		send_to_b(stack_a, stack_b, cheapest_operation_index);
+		cheapest_operation_index = find_cheapest_operation_index(stack_a, stack_b);
+		stack_a->top--;
+	}
+	test_index = stack_b->top;
+	while (test_index >= 0)
+	{
+		ft_printf("%d\n", stack_b->collection[test_index]);
+		test_index--;
+	}
 }
 
 void	send_to_b(t_stack *stack_a, t_stack *stack_b, int cheapest_operation_index)
 {
 	int	stack_a_steps_up;
 	int	stack_a_steps_down;
-	int	stack_b_steps_up;
-	int	stack_b_steps_down;
-	int	stack_b_index;
 	int	stack_b_placeholder;
 	char *direction;
 
 	stack_a_steps_up = 0;
 	stack_a_steps_down = 0;
-	stack_b_steps_up = 0;
-	stack_b_steps_down = 0;
 	if (stack_a->collection[cheapest_operation_index] == stack_a->collection[stack_a->top])
 	{
 		stack_b_placeholder = find_placeholder(stack_a, stack_b, stack_a->top);
 		direction = find_direction(stack_b, stack_b_placeholder);
-		if (direction == "up")
+		if (ft_strcmp(direction, "up") == 0)
 		{
-			while (1)
+			while (stack_b->top >= stack_b_placeholder)
 			 {
-				1 + 1;
+				rotate(stack_b, "rb");
+				stack_b_placeholder++;
 			 }
-						
-		//depois meter o stack_a[top] na stack_b
-		//fazer o resto com os outros 2 ifs
-		} 
+		
+		}
+		else if (ft_strcmp(direction, "down") == 0)
+		{
+			while (stack_b->top >= stack_b_placeholder)
+			{
+				reverse_rotate(stack_b, "rrb");
+				stack_b_placeholder--;
+			}
+		}
+		push(stack_a, stack_b, "pb");
 	}
 	else if (cheapest_operation_index >= (stack_a->top / 2))
 	{
-
+		stack_a_steps_up = cost_up_counter(stack_a, cheapest_operation_index);
+		stack_a_steps_down = cost_down_counter(stack_a, cheapest_operation_index);
+		if (stack_a_steps_up > stack_a_steps_down)
+		{
+			while (cheapest_operation_index <= stack_a->top)
+			{
+				rotate(stack_a, "ra");
+				cheapest_operation_index++;
+			}
+		}
+		else
+		{
+			while (cheapest_operation_index >= 0)
+			{
+				reverse_rotate(stack_a, "rra");
+				cheapest_operation_index--;
+			}
+		}
+		push(stack_a, stack_b, "pb");
 	}
-	else if (cheapest_operation_index < (stack_a->top / 2))
-
+	else
 	{
-
+		stack_a_steps_up = cost_up_counter(stack_a, cheapest_operation_index);
+		stack_a_steps_down = cost_down_counter(stack_a, cheapest_operation_index);
+		if (stack_a_steps_up > stack_a_steps_down)
+		{
+			while (cheapest_operation_index <= stack_a->top)
+			{
+				rotate(stack_a, "ra");
+				cheapest_operation_index++;
+			}
+		}
+		else
+		{
+			while (cheapest_operation_index >= 0)
+			{
+				reverse_rotate(stack_a, "rra");
+				cheapest_operation_index--;
+			}
+		}
+		push(stack_a, stack_b, "pb");
 	}
 }
-
-/*void	b_number_top(t_stack stack, int ideal_number)
-{*/
-
 
 int	find_cheapest_operation_index(t_stack *stack_a, t_stack *stack_b)
 {

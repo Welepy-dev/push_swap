@@ -15,7 +15,6 @@
 
 # include "../../libft/libft.h"
 # include "../../libft/printf/ft_printf.h"
-# include "../sort/sort.h"
 # include "../push_swap.h"
 
 # include <stdbool.h>
