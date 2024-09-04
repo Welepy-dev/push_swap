@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:28:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 16:51:52 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:47:40 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	turk_sort(t_stack *stack_a, t_stack *stack_b);
 void	a_to_b(t_stack *stack_a, t_stack *stack_b, int cheap_index);
 void	choose_sort(t_stack *stack_a, t_stack *stack_b);
 void	super_tiny_sort(t_stack *stack, char stack_name);
+void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 int		find_cheap_operation_index(t_stack *stack_a, t_stack *stack_b);
 int		cost_of_operation(t_stack *stack_a, t_stack *stack_b, int s_a_index);
