@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:30:57 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/09 13:53:40 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:22:12 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,51 @@ void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 		test_index--;
 	}*/
 }
+
+/*int	find_cheapest_operation_index(t_stack *stack_a, t_stack *stack_b)
+{
+	int	prime_cheapest;
+	int	next_cheapest;
+	int	cheapest_operation_index;
+	int	k;
+
+	k = stack_a->top;
+	prime_cheapest = cost_of_operation(stack_a, stack_b, k);
+	
+}*/
+
+// Paused here
+// I need to find the cheapest operation index of the number on the stack_a to be sent on stack_b. but how to do it when is needed two indexes?
+
+int smallest_difference_index(t_stack *stack_a, t_stack *stack_b)
+{
+	int stack_a_counter;
+	int stack_b_counter;
+	int first_difference;
+	int next_difference;
+	int smallest_difference_index;
+
+	stack_a_counter = stack_a->top;
+	stack_b_counter = stack_b->top;
+	first_difference = INT_MAX;
+	while (stack_a_counter >= 0)
+	{
+		while (stack_b_counter >= 0)
+		{
+			next_difference = stack_a->collection[stack_a_counter] - stack_b->collection[stack_b_counter];
+			if (next_difference < first_difference)
+			{
+				first_difference = next_difference;
+				smallest_difference_index = stack_a_counter;
+			}
+			stack_b_counter--;
+		}
+		stack_a_counter--;
+	}
+	return (smallest_difference_index);
+}
+
+
 
 void	a_to_b(t_stack *stack_a, t_stack *stack_b, int cheap_index)
 {
@@ -143,7 +188,7 @@ void	a_to_b(t_stack *stack_a, t_stack *stack_b, int cheap_index)
 	return (cheapest_operation_index);
 }*/
 
-int	find_cheap_operation_index(t_stack *stack_a, t_stack *stack_b)
+/*int	find_cheap_operation_index(t_stack *stack_a, t_stack *stack_b)
 {
 	int	prime_cheapest;
 	int	next_cheapest;
@@ -155,7 +200,7 @@ int	find_cheap_operation_index(t_stack *stack_a, t_stack *stack_b)
 	cheapest_operation_index = k;
 	k--;
 	
-	while (k > 0)
+	while (k >= 0)
 	{
 		next_cheapest = cost_of_operation(stack_a, stack_b, k);
 		ft_printf("Comparing costs: %d (current cheapest) vs %d (next)\n", prime_cheapest, next_cheapest);  // Debug output
@@ -187,7 +232,7 @@ int	cost_down_counter(t_stack *stack, int stack_number_index)
 	int	steps_down;
 
 	steps_down = 0;
-	while (stack_number_index > 0)
+	while (stack_number_index >= 0)
 	{
 		steps_down++;
 		stack_number_index--;
@@ -259,7 +304,7 @@ char	*find_direction(t_stack *stack, int number_position)
 	else
 		direction = "down";
 	return (direction);
-}
+}*/
 
 void print_stacks(t_stack *stack_a, t_stack *stack_b) {
     int i;
