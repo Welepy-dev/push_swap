@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:30:57 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/09 16:22:12 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:52:13 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,16 @@ void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 // Paused here
 // I need to find the cheapest operation index of the number on the stack_a to be sent on stack_b. but how to do it when is needed two indexes?
 
+
+//use this function to find the cheapest index on each number from stack b
+int	b_cheap_index(t_stack *stack_a, t_stack *stack_b, int stack_a_index)
+{
+	int stack_b_index;
+	int first_difference;
+	int next_difference;
+}
+
+// use this function to find the cheapest index on each number from stack a
 int smallest_difference_index(t_stack *stack_a, t_stack *stack_b)
 {
 	int stack_a_counter;
