@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:28:12 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 16:57:57 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/09 10:44:19 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,21 @@ bool	is_full(t_stack *stack)
 
 bool	is_empty(t_stack *stack)
 {
-	return (stack->top == -1);
+	return (stack->top < -1);
 }
 
 int	pop(t_stack *stack)
 {
+	int	temp;
+
+	temp = stack->collection[stack->top];
+	stack->top--;
 	if (is_empty(stack))
 	{
 		ft_printf("Error 8\n");
 		print_error();
 	}
-	return (stack->collection[stack->top--]);
+	return (temp);
 }
 
 void	print_error(void)

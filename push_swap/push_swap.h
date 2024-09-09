@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:28:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 17:47:40 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:33:41 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	matrix_init(t_stack *stack_a, t_stack *stack_b, char **av, int ac);
 void	reverse_rotate(t_stack *stack_a, char *op);
 void	insert(t_stack *stack, int item);
 void	rotate_both(t_stack *stack_a, t_stack *stack_b);
-void	reverse_reverse_both(t_stack *stack_a, t_stack *stack_b);
+void	reverse_rotate_both(t_stack *stack_a, t_stack *stack_b);
 void	allocator_init(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
 void	validate_string(char *str);
 void	init_check_matrix(char **matrix);
@@ -59,6 +59,7 @@ void	a_to_b(t_stack *stack_a, t_stack *stack_b, int cheap_index);
 void	choose_sort(t_stack *stack_a, t_stack *stack_b);
 void	super_tiny_sort(t_stack *stack, char stack_name);
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
+void	functions_testers(t_stack *stack_a, t_stack *stack_b, int i);
 
 int		find_cheap_operation_index(t_stack *stack_a, t_stack *stack_b);
 int		cost_of_operation(t_stack *stack_a, t_stack *stack_b, int s_a_index);

@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:30:57 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 18:49:18 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:53:40 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,24 @@
 void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	cheapest_operation_index;
-	//int	test_index;
 	int	fake_top;
 
 	push(stack_a, stack_b, "pb");
 	push(stack_a, stack_b, "pb");
 
 	fake_top = stack_a->top; // maybe delete later
-
 	print_stacks(stack_a, stack_b);  // Debug output
 
 	cheapest_operation_index = find_cheap_operation_index(stack_a, stack_b);
-	while (fake_top >= 2)
+	ft_printf("Cheapest operation index: %d\n", cheapest_operation_index);  // Debug output
+	/*while (fake_top >= 0)
 	{
 		ft_printf("Cheapest operation index: %d\n", cheapest_operation_index);  // Debug output
 		a_to_b(stack_a, stack_b, cheapest_operation_index);
 		cheapest_operation_index = find_cheap_operation_index(stack_a, stack_b);
 		print_stacks(stack_a, stack_b);  // Debug output
 		fake_top--;
-	}
+	}*/
 
 	/*test_index = stack_b->top;
 	while (test_index >= 0)
@@ -110,7 +109,7 @@ void	a_to_b(t_stack *stack_a, t_stack *stack_b, int cheap_index)
 		}
 		else
 		{
-			while (cheap_index >= 0)
+			while (cheap_index > 0)
 			{
 				reverse_rotate(stack_a, "rra");
 				cheap_index--;
@@ -156,7 +155,7 @@ int	find_cheap_operation_index(t_stack *stack_a, t_stack *stack_b)
 	cheapest_operation_index = k;
 	k--;
 	
-	while (k >= 0)
+	while (k > 0)
 	{
 		next_cheapest = cost_of_operation(stack_a, stack_b, k);
 		ft_printf("Comparing costs: %d (current cheapest) vs %d (next)\n", prime_cheapest, next_cheapest);  // Debug output
@@ -188,7 +187,7 @@ int	cost_down_counter(t_stack *stack, int stack_number_index)
 	int	steps_down;
 
 	steps_down = 0;
-	while (stack_number_index >= 0)
+	while (stack_number_index > 0)
 	{
 		steps_down++;
 		stack_number_index--;
@@ -228,7 +227,7 @@ int	find_placeholder(t_stack *stack_a, t_stack *stack_b, int s_a_index)
 	diff = 0;
 	placeholder = 0;
 	i = stack_b->top;
-	while (i >= 0)
+	while (i > 0)
 	{
 		if (stack_a->collection[s_a_index] > stack_b->collection[i])
 		{
@@ -237,7 +236,7 @@ int	find_placeholder(t_stack *stack_a, t_stack *stack_b, int s_a_index)
 		}
 		i--;
 	}
-	while (i >= 0)
+	while (i > 0)
 	{
 		if (stack_a->collection[s_a_index] > stack_b->collection[i])
 			diff = stack_a->collection[s_a_index] - stack_b->collection[i];
@@ -269,9 +268,15 @@ void print_stacks(t_stack *stack_a, t_stack *stack_b) {
     for (i = stack_a->top; i >= 0; i--) {
         ft_printf("%d ", stack_a->collection[i]);
     }
+    ft_printf("\nStack A current topmost number: %d\n", stack_a->collection[stack_a->top]);
+    ft_printf("Stack A capacity: %d\n", stack_a->capacity);
+    ft_printf("Stack A top index: %d\n", stack_a->top);
     ft_printf("\nStack B: ");
     for (i = stack_b->top; i >= 0; i--) {
         ft_printf("%d ", stack_b->collection[i]);
     }
+    ft_printf("\nStack B current topmost number: %d\n", stack_b->collection[stack_b->top]);
+    ft_printf("Stack B capacity: %d\n", stack_b->capacity);
+    ft_printf("Stack B top index: %d\n", stack_b->top);
     ft_printf("\n");
 }

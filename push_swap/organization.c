@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:53:36 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 18:48:40 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:33:41 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,15 @@ int	swap_both(t_stack *stack_a, t_stack *stack_b)
 
 int	push(t_stack *src, t_stack *dst, char *op)
 {
-	int	temp;
-
 	if (is_full(dst))
 	{
 		ft_printf("Error 4\n");
 		print_error();
 	}
-	temp = pop(src);
-	dst->collection[++dst->top] = temp;
-	if (*op)
-		ft_printf("%s\n", op);
+	dst->top++;
+	dst->collection[dst->top] = src->collection[src->top];
+	src->top--;
+	ft_printf("%s\n", op);
 	return (0);
 }
 
