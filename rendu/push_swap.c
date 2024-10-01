@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:54:42 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 19:56:40 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/01 20:03:17 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 	ps.a = &a;
 	ps.b = &b;
 	init(&ps, av);
-	//ft_matrix_free(av);		HAVE TO DEAL WITH DOUBLE FREE ERROR
+	ft_matrix_free(av);		//HAVE TO DEAL WITH DOUBLE FREE ERROR
 	if (!is_sorted(ps.a))
 	{
 		if (ps.a->capacity == 2)
