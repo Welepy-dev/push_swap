@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:30:57 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/09 16:52:13 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/01 19:28:03 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,21 +317,40 @@ char	*find_direction(t_stack *stack, int number_position)
 }*/
 
 void print_stacks(t_stack *stack_a, t_stack *stack_b) {
-    int i;
+    int i, max_height;
 
-    ft_printf("Stack A: ");
-    for (i = stack_a->top; i >= 0; i--) {
-        ft_printf("%d ", stack_a->collection[i]);
+    ft_printf("Stacks Overview:\n\n");
+    ft_printf("  Stack A        Stack B\n");
+    ft_printf("-------------------------\n");
+
+    // Find the larger of the two stacks to iterate through
+    max_height = (stack_a->top > stack_b->top) ? stack_a->top : stack_b->top;
+
+    for (i = max_height; i >= 0; i--) {
+        // Print Stack A value or a placeholder if the stack is shorter
+        if (i <= stack_a->top) {
+            ft_printf("%10d", stack_a->collection[i]);
+        } else {
+            ft_printf("          ");  // 10 spaces for alignment
+        }
+
+        ft_printf("   |   ");
+
+        // Print Stack B value or a placeholder if the stack is shorter
+        if (i <= stack_b->top) {
+            ft_printf("%10d", stack_b->collection[i]);
+        } else {
+            ft_printf("          ");  // 10 spaces for alignment
+        }
+
+        ft_printf("\n");
     }
-    ft_printf("\nStack A current topmost number: %d\n", stack_a->collection[stack_a->top]);
-    ft_printf("Stack A capacity: %d\n", stack_a->capacity);
-    ft_printf("Stack A top index: %d\n", stack_a->top);
-    ft_printf("\nStack B: ");
-    for (i = stack_b->top; i >= 0; i--) {
-        ft_printf("%d ", stack_b->collection[i]);
-    }
-    ft_printf("\nStack B current topmost number: %d\n", stack_b->collection[stack_b->top]);
-    ft_printf("Stack B capacity: %d\n", stack_b->capacity);
-    ft_printf("Stack B top index: %d\n", stack_b->top);
+
+    ft_printf("-------------------------\n");
+    ft_printf("Top (A): %d         Top (B): %d\n", 
+              stack_a->top >= 0 ? stack_a->collection[stack_a->top] : -1, 
+              stack_b->top >= 0 ? stack_b->collection[stack_b->top] : -1);
+    ft_printf("Cap (A): %d         Cap (B): %d\n", stack_a->capacity, stack_b->capacity);
+    ft_printf("Idx (A): %d         Idx (B): %d\n", stack_a->top, stack_b->top);
     ft_printf("\n");
 }

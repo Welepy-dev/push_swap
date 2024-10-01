@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hedge_cases.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:09:31 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/08/23 14:20:25 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/01 19:18:57 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define HEDGE_CASES_H
 
 # include "../../libft/libft.h"
-# include "../../libft/printf/ft_printf.h"
+# include "../../libft/ft_printf/ft_printf.h"
 # include "../push_swap.h"
 
 # include <stdbool.h>

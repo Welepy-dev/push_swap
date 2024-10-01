@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:28:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/09 12:33:41 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/01 19:18:57 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-# include "../libft/printf/ft_printf.h"
+# include "../libft/ft_printf/ft_printf.h"
 # include "./hedge_cases/hedge_cases.h"
 
 # include <stdbool.h>

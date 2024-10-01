@@ -6,14 +6,14 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 14:57:18 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/09/04 12:21:19 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/01 19:18:57 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "./printf/ft_printf.h"
+# include "./ft_printf/ft_printf.h"
 # include "../push_swap/push_swap.h"
 # include "../push_swap/hedge_cases/hedge_cases.h"
 
