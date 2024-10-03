@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:09:40 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 19:18:57 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:51:17 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,24 @@ void	print_error(char *error, char id, t_ps *ps)
 	if (error)
 		ft_printf("Error: %s Stack %c.\n", error, id);
 	exit(0);
+}
+
+int	smallest_stack_number_index(t_stack *stack)
+{
+	int	i;
+	int	smallest_number;
+	int	smallest_number_index;
+
+	i = 0;
+	smallest_number = INT_MAX;
+	smallest_number_index = 0;
+	while (i <= stack->top)
+	{
+		if (stack->collection[i] < smallest_number)
+		{
+			smallest_number = stack->collection[i];
+			smallest_number_index = i;
+		}
+		i++;
+	}
 }
