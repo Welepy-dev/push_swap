@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:09:40 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/03 14:51:17 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:17:12 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,17 @@ int	smallest_stack_number_index(t_stack *stack)
 		}
 		i++;
 	}
+	return (smallest_number_index);
+}
+
+int	change_current_median_index(t_stack *stack)
+{
+	stack->current_median_index = ((stack->top + 1) / 2);
+}
+
+bool	is_above_median(t_stack *stack, int index)
+{
+	if (index >= stack->current_median_index)
+		return (true);
+	return (false);
 }

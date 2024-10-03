@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:37:02 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 19:42:42 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:13:15 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void print_stacks(t_stack *stack_a, t_stack *stack_b) {
     // Find the larger of the two stacks to iterate through
     max_height = (stack_a->top > stack_b->top) ? stack_a->top : stack_b->top;
 
-    for (i = max_height; i >= 0; i--) {
+    for (i = max_height; i >= 0 ; i--) {
         // Print Stack A value or a placeholder if the stack is shorter
         if (i <= stack_a->top) {
             ft_printf("%d", stack_a->collection[i]);
@@ -48,5 +48,6 @@ void print_stacks(t_stack *stack_a, t_stack *stack_b) {
               stack_b->top >= 0 ? stack_b->collection[stack_b->top] : -1);
     ft_printf("Cap A: %d           Cap B: %d\n", stack_a->capacity, stack_b->capacity);
     ft_printf("Top idx A: %d       Top dx B: %d\n", stack_a->top, stack_b->top);
+    ft_printf("Counter A: %d       Counter B: %d\n", stack_a->counter, stack_b->counter);
     ft_printf("\n");
 }

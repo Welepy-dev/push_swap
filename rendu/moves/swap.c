@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:42:28 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 19:18:57 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:12:54 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	swap(t_stack *stack, char *op)
 	stack->collection[stack->top] = stack->collection[stack->top - 1];
 	stack->collection[stack->top - 1] = temp;
 	if (*op)
+	{
 		ft_printf("%s\n", op);
+		stack->counter++;
+	}
 }
 
 void	swap_both(t_stack *stack_a, t_stack *stack_b)

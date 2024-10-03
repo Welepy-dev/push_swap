@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:15:01 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 18:27:47 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:55:11 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_stack(t_stack *stack, char **av, int i, char id)
 {
+	stack->counter = 0;
 	stack->top = -1;
 	stack->capacity = i;
 	stack->target_index = 0;
@@ -23,11 +24,11 @@ void	init_stack(t_stack *stack, char **av, int i, char id)
 	stack->collection = (int *)malloc(i * sizeof(int));
 	if (!stack->collection)
 		print_error("While allocating", id, NULL);
-	i = 0;
+	i = stack->capacity - 1;
 	if (id == 'a')
 	{
-		while (i < stack->capacity)
-			insert(stack, ft_atoi((av[i++])));
+		while (i >= 0)
+			insert(stack, ft_atoi((av[i--])));
 		stack->id = 'A';
 	}
 	else
