@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:54:42 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 20:03:17 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:38:23 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ int	main(int ac, char **av)
 		av = ft_split(av[1], ' ');
 	ps.a = &a;
 	ps.b = &b;
-	init(&ps, av);
-	ft_matrix_free(av);		//HAVE TO DEAL WITH DOUBLE FREE ERROR
+	if (ac == 2)
+		init(&ps, av);
+	else
+		init(&ps, av + 1);
+	//ft_matrix_free(av);		//HAVE TO DEAL WITH DOUBLE FREE ERROR
 	if (!is_sorted(ps.a))
 	{
 		if (ps.a->capacity == 2)
