@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lazy_sort.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marcsilv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 20:57:03 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/03 21:05:48 by marcsilv         ###   ########.fr       */
+/*   Created: 2024/05/16 14:15:03 by marcsilv          #+#    #+#             */
+/*   Updated: 2024/05/16 14:16:35 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	lazy_sort(t_ps *ps)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	
+	size_t	i;
+
+	if (!n)
+		return (dest);
+	i = -1;
+	while (++i < n)
+		*((unsigned char *)dest + i) = *((unsigned char *)src + i);
+	return (dest);
 }

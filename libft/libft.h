@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:02:03 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 19:18:57 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:04:14 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 void	ft_put_ptr(uintptr_t num);
 void	ft_matrix_free(char **matrix);
+void	ft_copy_array(int *dest, int *src, int size);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 
 #endif

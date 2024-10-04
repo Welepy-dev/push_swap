@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:54:42 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/03 20:56:48 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:57:26 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,20 @@ int	main(int ac, char **av)
 		init(&ps, matrix);
 	else
 		init(&ps, av + 1);
-	if (matrix != NULL)
-		ft_matrix_free(matrix);
+	// if (matrix != NULL)
+	// 	ft_matrix_free(matrix);
 	if (!is_sorted(ps.a))
 	{
 		if (ps.a->capacity == 2)
 			swap(ps.a, "sa");
 		else if (ps.a->capacity == 3)
 			tiny_sort(ps.a);
-		else if (ps.a->capacity <= 10)
+		else if (ps.a->capacity <= 25)
 			aproximity_sort(&ps);
 		else
 			lazy_sort(&ps);
 	}
+	// print_stacks(ps.a, ps.b);
 	push_swap_free(&ps);
 	return (0);
 }

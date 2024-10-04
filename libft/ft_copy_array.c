@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tiny_sort.c                                        :+:      :+:    :+:   */
+/*   ft_copy_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 17:04:22 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/03 19:22:04 by marcsilv         ###   ########.fr       */
+/*   Created: 2024/10/04 15:01:57 by marcsilv          #+#    #+#             */
+/*   Updated: 2024/10/04 15:50:24 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	tiny_sort(t_stack *stack)
+void	ft_copy_array(int *dest, int *src, int size)
 {
-	int	highest_position;
+	int	i;
 
-	highest_position = highest_stack_number_index(stack);
-	if (highest_position == 2)
-		rotate(stack, "ra");
-	else if (highest_position == 1)
-		reverse_rotate(stack, "rra");
-	if (stack->collection[2] > stack->collection[1])
-		swap(stack, "sa");
+	i = 0;
+	while (i < size)
+	{
+		dest[i] = src[i];
+		i++;
+	}
 }

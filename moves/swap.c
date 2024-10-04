@@ -1,48 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_1.c                                          :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 14:46:37 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 19:52:05 by marcsilv         ###   ########.fr       */
+/*   Created: 2024/10/01 15:42:28 by marcsilv          #+#    #+#             */
+/*   Updated: 2024/10/04 13:56:07 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-bool	is_full(t_stack *stack)
+void	swap(t_stack *stack, char *op)
 {
-	return (stack->top == stack->capacity - 1);
-}
+	int	temp;
 
-bool	is_empty(t_stack *stack)
-{
-	return (stack->top < -1);
-}
-
-void	free_stack(t_stack *stack)
-{
-	free(stack->collection);
-}
-
-bool	is_sorted(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (i < stack->top)
+	if (stack->top < 1)
 	{
-		if (stack->collection[i] < stack->collection[i + 1])
-			return (false);
-		i++;
+		print_error("op ID: S", stack->id, NULL);
+		return ;
 	}
-	return (true);
+	temp = stack->collection[stack->top];
+	stack->collection[stack->top] = stack->collection[stack->top - 1];
+	stack->collection[stack->top - 1] = temp;
+	if (*op)
+		ft_printf("%s\n", op);
 }
 
-void	push_swap_free(t_ps *ps)
+void	swap_both(t_stack *stack_a, t_stack *stack_b)
 {
-	free_stack(ps->a);
-	free_stack(ps->b);
+	swap(stack_a, "\0");
+	swap(stack_b, "\0");
+	ft_printf("ss\n");
 }
