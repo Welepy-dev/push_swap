@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:42:28 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/04 13:56:07 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:35:48 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	swap(t_stack *stack, char *op)
 
 	if (stack->top < 1)
 	{
-		print_error("op ID: S", stack->id, NULL);
+		print_error("op ID: S", stack->id);
 		return ;
 	}
 	temp = stack->collection[stack->top];

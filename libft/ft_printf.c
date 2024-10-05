@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:26:50 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 19:18:57 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:01:48 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	find_specifier(char myString, va_list args)
 		length += lower(va_arg(args, unsigned int));
 	else if (myString == 'X')
 		length += upper(va_arg(args, unsigned int));
+	else if (myString == 'm')
+		length += ft_print_matrix(va_arg(args, char **));
 	else if (myString == '%')
 		length += ft_putchar('%');
 	return (length);

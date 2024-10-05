@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:09:40 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/04 15:45:28 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/05 14:51:57 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	highest_stack_number_index(t_stack *stack)
 	return (highest_number_index);
 }
 
-void	print_error(char *error, char id, t_ps *ps)
+void	print_error(char *error, char id)
 {
 	if (error)
 		ft_printf("Error: %s Stack %c.\n", error, id);
@@ -59,4 +59,38 @@ int	smallest_stack_number_index(t_stack *stack)
 		i++;
 	}
 	return (smallest_number_index);
+}
+
+void	choose_sort(t_ps *ps)
+{
+	if (ps->a->capacity == 2)
+		swap(ps->a, "sa");
+	else if (ps->a->capacity == 3)
+		tiny_sort(ps->a);
+	else if (ps->a->capacity <= 25)
+		aproximity_sort(ps);
+	else
+		lazy_sort(ps);
+}
+
+void	check_repeated_numbers(char **matrix)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (matrix[i])
+	{
+		j = i + 1;
+		while (matrix[j])
+		{
+			if (ft_atoi(matrix[i]) == ft_atoi(matrix[j]))
+			{
+				ft_printf("Error\n");
+				exit(1);
+			}
+			j++;
+		}
+		i++;
+	}
 }

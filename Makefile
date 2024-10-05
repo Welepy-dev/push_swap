@@ -6,7 +6,7 @@
 #    By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 12:05:53 by marcsilv          #+#    #+#              #
-#    Updated: 2024/10/04 16:34:59 by marcsilv         ###   ########.fr        #
+#    Updated: 2024/10/05 15:04:34 by marcsilv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,14 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = srcs
 UTILS_DIR = $(SRC_DIR)/utils
+MOVES_DIR = $(SRC_DIR)/moves
+SORT_DIR = $(SRC_DIR)/sort
 INC_DIR = includes
 OBJ_DIR = .
 HEADER = push_swap.h
 
 SRC_FILES =		./moves/push.c ./moves/rotate.c ./moves/swap.c ./sort/aproximity_sort.c ./sort/lazy_aproximity.c ./sort/lazy_sort.c \
-				./sort/tiny_sort.c ./utils/utils_2.c ./utils/utils_1.c ./init.c ./push_swap.c
+				./sort/tiny_sort.c ./utils/utils_2.c ./utils/utils_3.c ./utils/utils_1.c ./init.c ./push_swap.c
                 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJ_PATHS = $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
@@ -31,7 +33,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_PATHS)
 	$(MAKE) -C $(dir $(LIBFT))
-	$(CC) $(OBJ_PATHS) -L./libft -lft -o $(NAME)
+	$(CC) $(OBJ_PATHS) $(UTILS_DIR) $(MOVES_DIR) $(SORT_DIR) $ -L./libft -lft -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)

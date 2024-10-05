@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:57:52 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/04 15:45:10 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:35:40 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rotate(t_stack *stack, char *op)
 	int	temp;
 
 	if (stack->top < 1)
-		print_error("op ID: R", stack->id, NULL);
+		print_error("op ID: R", stack->id);
 	else
 	{
 		temp = stack->collection[stack->top];
@@ -34,7 +34,7 @@ void	reverse_rotate(t_stack *stack, char *op)
 	int	temp;
 
 	if (stack->top < 1)
-		print_error("op ID: RR", stack->id, NULL);
+		print_error("op ID: RR", stack->id);
 	else
 	{
 		temp = stack->collection[0];

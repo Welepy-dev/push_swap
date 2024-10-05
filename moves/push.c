@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:41:20 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/03 18:45:24 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:35:27 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	push(t_stack *src, t_stack *dst, char *op)
 {
 	if (is_empty(src))
-		print_error("Source is empty. op ID: Push", src->id, NULL);
+		print_error("Source is empty. op ID: Push", src->id);
 	if (is_full(dst))
-		print_error("Destiny is full. op ID: Push", dst->id, NULL);
+		print_error("Destiny is full. op ID: Push", dst->id);
 	dst->top++;
 	dst->collection[dst->top] = src->collection[src->top];
 	src->top--;
@@ -28,6 +28,6 @@ void	push(t_stack *src, t_stack *dst, char *op)
 void	insert(t_stack *stack, int item)
 {
 	if (is_full(stack))
-		print_error("Destiny is full. op ID: Insert", stack->id, NULL);
+		print_error("Destiny is full. op ID: Insert", stack->id);
 	stack->collection[++stack->top] = item;
 }

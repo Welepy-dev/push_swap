@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:10:29 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/04 16:18:12 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/05 15:08:32 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	lazy_sort(t_ps *ps)
 	}
 	free(array);
 	lazy_aproximity(ps);
-	stack_it(ps);;
+	stack_it(ps);
 }

@@ -6,38 +6,11 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:02:55 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/01 14:15:22 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/05 14:56:13 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// static int	count_words(char *s, char c)
-// {
-// 	int	count;
-// 	bool	in_word;
-
-// 	count = 0;
-// 	while (*s)
-// 	{
-// 		in_word = false;
-// 		while (*s == c)
-// 			++s;
-// 		while (*s && *s != c)
-// 		{
-// 			if (!in_word)
-// 			{
-// 				in_word = true;
-// 				++count;
-// 			}
-// 			++s;
-// 		}
-// 	}
-// 	return (count);
-// }	
-
-// static char	*get_next_word(char *s, char c)
-// {
 
 static int	numwords(char const *s, char c)
 {
