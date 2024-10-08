@@ -108,11 +108,11 @@ The commands are:
 
 And then, we have operations that changes both stacks, do mind that this every single one of these count only as one operation
 
-`ss` : Does `sa` and `sb` at the same time. 
+`ss` (swap both) : Does `sa` and `sb` at the same time. 
 
-`rr` : `ra` and `rb` at the same time. 
+`rr` (rotate both): `ra` and `rb` at the same time. 
 
-`rrr` : `rra` and `rrb` at the same time.
+`rrr` (reverse rotate both): `rra` and `rrb` at the same time.
 
 <table>
   <tr>
