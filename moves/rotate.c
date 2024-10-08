@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:57:52 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/05 12:35:40 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:05:17 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	rotate(t_stack *stack, char *op)
 		ft_printf("%s\n", op);
 }
 
-void	reverse_rotate(t_stack *stack, char *op)
+int	reverse_rotate(t_stack *stack, char *op)
 {
 	int	temp;
 
@@ -44,6 +44,7 @@ void	reverse_rotate(t_stack *stack, char *op)
 	}
 	if (*op)
 		ft_printf("%s\n", op);
+	return (1);
 }
 
 void	rotate_both(t_stack *stack_a, t_stack *stack_b)

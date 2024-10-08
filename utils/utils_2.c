@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:09:40 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/05 14:51:57 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:59:05 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ void	print_error(char *error, char id)
 {
 	if (error)
 		ft_printf("Error: %s Stack %c.\n", error, id);
-	exit(0);
+	if (id == ' ')
+		ft_printf("Invalid number\n");
+	exit(1);
 }
 
 int	smallest_stack_number_index(t_stack *stack)
@@ -69,11 +71,13 @@ void	choose_sort(t_ps *ps)
 		tiny_sort(ps->a);
 	else if (ps->a->capacity <= 25)
 		aproximity_sort(ps);
-	else
-		lazy_sort(ps);
+	else if (ps->a->capacity < 200)
+		lazy_sort(ps, 5);
+	else if (ps->a->capacity >= 200)
+		lazy_sort(ps, 14);
 }
 
-void	check_repeated_numbers(char **matrix)
+bool	check_repeated_numbers(char **matrix)
 {
 	int	i;
 	int	j;
@@ -87,10 +91,11 @@ void	check_repeated_numbers(char **matrix)
 			if (ft_atoi(matrix[i]) == ft_atoi(matrix[j]))
 			{
 				ft_printf("Error\n");
-				exit(1);
+				return (false);
 			}
 			j++;
 		}
 		i++;
 	}
+	return (true);
 }

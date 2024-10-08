@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:15:01 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/05 12:35:11 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:14:37 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,3 @@ void	init(t_ps *ps, char **av)
 	init_stack(ps->a, av, i, 'a');
 	init_stack(ps->b, av, i, 'b');
 }
-
-/*
-init_check_matrix(matrix);
-*/

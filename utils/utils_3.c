@@ -6,13 +6,21 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 14:52:09 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/05 15:10:47 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:25:52 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	is_matrix_valid(char **matrix)
+void	error(char **matrix, char id)
+{
+	ft_printf("Error.\n");
+	if (id)
+		ft_matrix_free(matrix);
+	exit(1);
+}
+
+bool	is_matrix_valid(char **matrix, char id)
 {
 	int		i;
 	int		j;
@@ -20,12 +28,13 @@ void	is_matrix_valid(char **matrix)
 
 	i = 0;
 	is_valid = true;
+	is_valid = check_repeated_numbers(matrix);
 	while (matrix[i])
 	{
 		j = 0;
 		while (matrix[i][j])
 		{
-			validate_number_range(ft_atoi_long(matrix[i]));
+			validate_number_range(ft_atoi_long(matrix[i]), matrix, id);
 			if (!ft_isdigit(matrix[i][j]) && \
 			(matrix[i][j] != '-' && matrix[i][j] != '+'))
 				is_valid = false;
@@ -36,19 +45,16 @@ void	is_matrix_valid(char **matrix)
 		}
 		i++;
 	}
-	check_repeated_numbers(matrix);
-	if (!is_valid)
-	{
-		ft_printf("Error\n");
-		exit(1);
-	}
+	return (is_valid);
 }
 
-void	validate_number_range(long num)
+void	validate_number_range(long num, char **matrix, char id)
 {
 	if (num > INT_MAX || num < INT_MIN)
 	{
 		ft_printf("Error\n");
+		if (id)
+			ft_matrix_free(matrix);
 		exit(1);
 	}
 }

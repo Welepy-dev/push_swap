@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 15:53:10 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/05 15:09:10 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:25:36 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	stack_it(t_ps *ps)
 				highest_number_index = highest_stack_number_index(ps->b);
 			}
 		}
-		push(ps->b, ps->a, "pa");
+		while (highest_stack_number_index(ps->b) == ps->b->top)
+			push(ps->b, ps->a, "pa");
 	}
 }

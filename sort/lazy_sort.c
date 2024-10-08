@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:10:29 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/05 15:08:32 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:06:53 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,38 +36,45 @@ void	bubble_sort(int *array, int size)
 	}
 }
 
-void	lazy_sort(t_ps *ps)
+void	lazy_sort_util(int *array, t_ps *ps)
 {
-	int	*array;
-	int	i;
-	int	j;
-	int	l;
-
-	j = 1;
-	array = malloc(sizeof(int) * ps->a->capacity);
-	ft_copy_array(array, ps->a->collection, ps->a->capacity);
-	bubble_sort(array, ps->a->capacity);
-	i = ps->a->top;
-	while (j < 4)
-	{
-		ps->a->pivo = array[j * ps->a->capacity / 4];
-		while (i >= 0)
-		{
-			if ((ps->a->collection[i] <= ps->a->pivo))
-			{
-				l = ps->a->collection[i];
-				if (l != ps->a->collection[ps->a->top])
-					while (l != ps->a->collection[ps->a->top])
-						rotate(ps->a, "ra");
-				push(ps->a, ps->b, "pb");
-				i = ps->a->top;
-			}
-			i--;
-		}
-		i = ps->a->top;
-		j++;
-	}
 	free(array);
 	lazy_aproximity(ps);
 	stack_it(ps);
+}
+
+void	lazy_sort_helper(int **array, t_ps *ps)
+{
+	*array = malloc(sizeof(int) * ps->a->capacity);
+	ft_copy_array(*array, ps->a->collection, ps->a->capacity);
+	bubble_sort(*array, ps->a->capacity);
+}
+
+void	lazy_sort(t_ps *ps, int flag)
+{
+	int	*array;
+	int	ptr[3];
+
+	ptr[1] = 0;
+	lazy_sort_helper(&array, ps);
+	ptr[0] = ps->a->top;
+	while (++ptr[1] < flag)
+	{
+		ps->a->pivo = array[ptr[1] * ps->a->capacity / flag];
+		while (--ptr[0] >= 0)
+		{
+			if ((ps->a->collection[ptr[0]] <= ps->a->pivo))
+			{
+				ptr[2] = ps->a->collection[ptr[0]];
+				if (ptr[2] != ps->a->collection[ps->a->top])
+					while (ptr[2] != ps->a->collection[ps->a->top])
+						rotate(ps->a, "ra");
+				while (ps->a->collection[ps->a->top] <= ps->a->pivo)
+					push(ps->a, ps->b, "pb");
+				ptr[0] = ps->a->top;
+			}
+		}
+		ptr[0] = ps->a->top;
+	}
+	lazy_sort_util(array, ps);
 }

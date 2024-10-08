@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:10:29 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/04 16:10:05 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:27:34 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ void	aproximity_sort(t_ps *ps)
 		smallest_number_index = smallest_stack_number_index(ps->a);
 		if (smallest_number_index < ps->a->top / 2)
 		{
-			while (smallest_number_index != ps->a->top)
-			{
-				reverse_rotate(ps->a, "rra");
+			while ((smallest_number_index != ps->a->top) \
+			&& reverse_rotate(ps->a, "rra"))
 				smallest_number_index = smallest_stack_number_index(ps->a);
-			}
 		}
 		else
 		{

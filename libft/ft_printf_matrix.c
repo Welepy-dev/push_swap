@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:02:26 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/05 13:10:04 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/08 10:24:55 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	ft_print_matrix(char **matrix)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (matrix[i])
