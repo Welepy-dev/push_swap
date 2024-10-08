@@ -6,7 +6,7 @@
 #    By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 12:05:53 by marcsilv          #+#    #+#              #
-#    Updated: 2024/10/06 12:18:25 by marcsilv         ###   ########.fr        #
+#    Updated: 2024/10/08 16:10:45 by marcsilv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,29 +26,35 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJ_PATHS = $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
 
 LIBFT = ./libft/Makefile
+VISUALIZER = ./push_swap_visualizer/Makefile
 
-all: $(NAME)
+all: $(NAME) visualizer 
 
 $(NAME): $(OBJ_PATHS)
 	$(MAKE) -C $(dir $(LIBFT))
-	$(CC) $(OBJ_PATHS) $ -L./libft -lft -o $(NAME)
+	$(CC) $(OBJ_PATHS) -L./libft -lft -o $(NAME)
+
+visualizer:
+	$(MAKE) -C $(dir $(VISUALIZER))  # Call the visualizer Makefile
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -I mlx_linux -I ./libft/includes -c $< -o $@
+	$(CC) $(CFLAGS) -I $(INC_DIR) -I ./libft/includes -c $< -o $@
 
 $(OBJ_DIR)/%.o: $(UTILS_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -I mlx_linux -I ./libft/includes -c $< -o $@
+	$(CC) $(CFLAGS) -I $(INC_DIR) -I ./libft/includes -c $< -o $@
 
 clean:
 	rm -f $(OBJ_PATHS)
 	$(MAKE) -C $(dir $(LIBFT)) clean
+	$(MAKE) -C $(dir $(VISUALIZER)) clean  # Clean visualizer
 
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -C $(dir $(LIBFT)) fclean
+	$(MAKE) -C $(dir $(VISUALIZER)) fclean  # Full clean for visualizer
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re visualizer
