@@ -12,26 +12,28 @@ Source:
 [infocodify](https://www.infocodify.com/c-programming/stack).
 
 # Instalation
-`git clone https://github.com/Welepy-dev/push_swap.git`.
+```git clone https://github.com/Welepy-dev/push_swap.git```.
 
-`cd push_swap`.
+```cd push_swap```.
 
-`make`.
+```make```.
 
 # Usage
 You can check the number of operations with this command:
 
-`ARG=($(shuf -i 1-100)) ; ./push_swap $ARG | wc -l`.
+```ARG=($(shuf -i 1-100)) ; ./push_swap $ARG | wc -l```.
 
 You can also use this command to use this cool visualizer courtesy of [@gecarval](https://github.com/gecarval).
 
-`ARG=($(shuf -i 1-100)) ; ./push_swap $ARG > ./push_swap_visualizer/result.txt ; ./push_swap_visualizer/push_swap_visualizer $ARG`.
+```ARG=($(shuf -i 1-100)) ; ./push_swap $ARG > ./push_swap_visualizer/result.txt ; ./push_swap_visualizer/push_swap_visualizer $ARG```.
 
 This command writes every command to a txt file called result, you can then use: 
 
-`cat ./push_swap_visualizer/result.txt | wc -l` to display the number of operations.
+```cat ./push_swap_visualizer/result.txt | wc -l``` to display the number of operations.
 
 # Explanation
+## Operations
+
 As you read before, this project has a lot of constraints such as using stacks. another constraint is that we are limited to use certain commands to finish this project.
 
 The commands are:
@@ -132,3 +134,71 @@ And then, we have operations that changes both stacks, do mind that this every s
   </tr>
 </table>
 
+## Code explanation
+In this project you have the liberty of using tables, arrays, linked lists or any linear data structure to solve the problem, everyone said that is very hard to do it with arrays, so I made it.
+Firstly, I've declared two structs: one to store variables from stack a and b respectively and another that points to those stacks.
+
+<table>
+  <tr>
+    <td>
+
+### t_stack
+```
+typedef struct s_stack
+{
+	char	id;
+	int		top;
+	int		capacity;
+	int		*collection;
+	int		pivo;
+}	t_stack;
+```
+  </td>
+  <td>
+  
+### t_stack
+```
+typedef struct s_push_swa[
+{
+    t_stack *a;
+    t_stack *b;
+}  t_ps;
+```
+  </td>
+  </tr>
+  </table>
+We have here an `id`, to identify each stack, an `integer top`, that stores the index of the element of the stack that is at the top, this integer is **initialized as -1** because this stack have to start at index 0.
+another integer, `capacity`, to store the **maximum capacity** that these stacks can handle, this value is based on input and is made to allocate enough memory in *collection to store the collection of numbers, a pointer to int called ***collection** to store the colection of integers of the input and a pivot, this pivot is used to make my lazy implementation of the quiscksort algorithm
+  As for the libraries used here are they: (mostly for libft)
+
+  ```
+# include <stdbool.h>
+# include <unistd.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <stdint.h>
+# include <stdarg.h>
+# include <ctype.h>
+# include <errno.h>
+```
+After the declaration of the control structures, I make some validations. Our project uses **Argument Counter** and **Argument Vector** in our main function, so at the beggining I check if those arguments are valid.
+```
+if (ac == 1 || (ac == 2 && (!ft_strlen(av[1]) || !ft_strcmp(av[1], " "))))
+		error(NULL, '\0');
+```
+This if statement checks if our **Argument counter** is just 1, in other words just the program name. It also checks if the string that contains the number sequence is empty or if it is a bunch of spaces.
+In the subject of this project it says that this project should work with several amounts of numbers with or without quotation marks  ("") so we have an if statement to initialize and sort if this is the input.
+```
+	if (ac == 2)
+	{
+		matrix = ft_split(av[1], ' ');
+		if (!is_matrix_valid(matrix, 'm'))
+			error(matrix, 'm');
+		init(&ps, matrix);
+		if (!is_sorted(ps.a))
+			choose_sort(&ps);
+		ft_matrix_free(matrix);
+	}
+```
+Here we use split (hopefully you know it works), to return an allocated 2d arry of the argument counter separated by spaces.
