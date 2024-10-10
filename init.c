@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:15:01 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/08 12:14:37 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:13:47 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_stack(t_stack *stack, char **av, int i, char id)
 {
 	stack->top = -1;
-	stack->pivo = 0;
+	stack->pivot = 0;
 	stack->capacity = i;
 	stack->collection = (int *)malloc(i * sizeof(int));
 	if (!stack->collection)

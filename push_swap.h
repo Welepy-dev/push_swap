@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:28:58 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/08 15:17:26 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:13:47 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_stack
 	int		top;
 	int		capacity;
 	int		*collection;
-	int		pivo;
+	int		pivot;
 }	t_stack;
 
 typedef struct s_push_swap

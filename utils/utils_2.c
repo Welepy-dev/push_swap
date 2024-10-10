@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:09:40 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/08 12:59:05 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:20:10 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,7 @@ bool	check_repeated_numbers(char **matrix)
 		while (matrix[j])
 		{
 			if (ft_atoi(matrix[i]) == ft_atoi(matrix[j]))
-			{
-				ft_printf("Error\n");
 				return (false);
-			}
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:10:29 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/10/08 13:06:53 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:13:47 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ void	lazy_sort(t_ps *ps, int flag)
 	ptr[0] = ps->a->top;
 	while (++ptr[1] < flag)
 	{
-		ps->a->pivo = array[ptr[1] * ps->a->capacity / flag];
+		ps->a->pivot = array[ptr[1] * ps->a->capacity / flag];
 		while (--ptr[0] >= 0)
 		{
-			if ((ps->a->collection[ptr[0]] <= ps->a->pivo))
+			if ((ps->a->collection[ptr[0]] <= ps->a->pivot))
 			{
 				ptr[2] = ps->a->collection[ptr[0]];
 				if (ptr[2] != ps->a->collection[ps->a->top])
 					while (ptr[2] != ps->a->collection[ps->a->top])
 						rotate(ps->a, "ra");
-				while (ps->a->collection[ps->a->top] <= ps->a->pivo)
+				while (ps->a->collection[ps->a->top] <= ps->a->pivot)
 					push(ps->a, ps->b, "pb");
 				ptr[0] = ps->a->top;
 			}
