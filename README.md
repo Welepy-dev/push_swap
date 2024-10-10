@@ -30,10 +30,10 @@ You can check the number of operations with this command:
 ARG=($(shuf -i 1-100)) ; ./push_swap $ARG | wc -l
 ```
 
-You can also use this command to use this cool visualizer courtesy of [@gecarval](https://github.com/gecarval).
+You can also use this command to use this cool visualizer courtesy of [@gecarval](https://github.com/gecarval), you will have to execute it inside the visualizer folder tho, don't know why.
 
 ```
-ARG=($(shuf -i 1-100)) ; ./push_swap $ARG > ./push_swap_visualizer/result.txt ; ./push_swap_visualizer/push_swap_visualizer $ARG
+ARG=($(shuf -i 1-100)) ; ../push_swap $ARG > result.txt ; ./push_swap_visualizer $ARG
 ```
 
 This command writes every command to a txt file called result, you can then this to display the number of operations 
@@ -396,6 +396,12 @@ If you look at the code, you will see that we have a flag that is used to determ
 this calculation `ps->a->pivot = array[i * ps->a->capacity / flag]` is used to find the current pivot and we iterate through the stack A to find the numbers that are less than the pivot, if we find a number that is less than the pivot we send it to the stack B, if it is greater we do nothing. That will prepare small chunk of numbers within a range. At the end we sort the stack A using the **lazy_aproximity** to organize the last numbers and push all the numbers that are left.
 lastly we have the **stack_it** function that is responsible for finding always the largest number in the stack B and sending it to the stack A.
 After that we set the pivot to the middle of the array and start the quicksort algorithm. We iterate through the array and if the number is less than the pivot we send it to the stack B, if it is greater we do nothing. At the end we sort the stack A using the **aproximity_sort** function and push all the numbers from the stack B to the stack A.
+
+# Testing
+This is the visualization for 100 numbers which makes ~700 operations, I think it's pretty good lol.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TaOsICRffCk?si=dxGMY760ZzFuNIo9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+This is the visualization for 500 numbers which makes ~7150 operations.
 
 # Conclusion
 That's it! these are what I think the main parts of the code.
