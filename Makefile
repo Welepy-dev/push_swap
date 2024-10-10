@@ -6,7 +6,7 @@
 #    By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 12:05:53 by marcsilv          #+#    #+#              #
-#    Updated: 2024/10/08 16:10:45 by marcsilv         ###   ########.fr        #
+#    Updated: 2024/10/08 19:39:37 by marcsilv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = srcs
-
 INC_DIR = includes
 OBJ_DIR = .
 HEADER = push_swap.h
@@ -35,7 +34,7 @@ $(NAME): $(OBJ_PATHS)
 	$(CC) $(OBJ_PATHS) -L./libft -lft -o $(NAME)
 
 visualizer:
-	$(MAKE) -C $(dir $(VISUALIZER))  # Call the visualizer Makefile
+	$(MAKE) -C $(dir $(VISUALIZER))
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
