@@ -195,6 +195,37 @@ As for the libraries used here are they: (mostly for libft)
 # include <ctype.h>
 # include <errno.h>
 ```
+#### Main function
+```
+int	main(int ac, char **av)
+{
+	t_stack	a;
+	t_stack	b;
+	t_ps	ps;
+	char	**matrix;
+
+	if (ac == 1 || (ac == 2 && (!ft_strlen(av[1]) || !ft_strcmp(av[1], " "))))
+		error(NULL, '\0');
+	ps.a = &a;
+	ps.b = &b;
+	if (ac == 2)
+	{
+		matrix = ft_split(av[1], ' ');
+		if (!is_matrix_valid(matrix, 'm'))
+			error(matrix, 'm');
+		init(&ps, matrix);
+		if (!is_sorted(ps.a))
+			choose_sort(&ps);
+		ft_matrix_free(matrix);
+	}
+	else
+		init_matrix(av + 1, &ps);
+	push_swap_free(&ps);
+	return (0);
+}
+```
+
+#### Argument  Validation
 After the declaration of the control structures, I make some validations. Our project uses **Argument Counter** and **Argument Vector** in our main function, so at the beggining I check if those arguments are valid.
 ```
 if (ac == 1 || (ac == 2 && (!ft_strlen(av[1]) || !ft_strcmp(av[1], " "))))
@@ -202,6 +233,7 @@ if (ac == 1 || (ac == 2 && (!ft_strlen(av[1]) || !ft_strcmp(av[1], " "))))
 ```
 This if statement checks if our **Argument counter** is just 1, in other words just the program name. It also checks if the string that contains the number sequence is empty or if it is a bunch of spaces.
 In the subject of this project it says that this project should work with several amounts of numbers with or without quotation marks  (" ") so we have an if statement to initialize and sort if this is the input.
+#### Main snippet
 ```
 if (ac == 2)
 {
@@ -361,6 +393,14 @@ void	lazy_sort(t_ps *ps, int flag)
 ```
 First we allocate an array to store the collection of numbers, then we copy the collection of numbers from the stack A to the array and sort them using bubble sort. in that organized array we will find our 3 pivots
 If you look at the code, you will see that we have a flag that is used to determine the number of pivots that we will use, this number is based on the input size, for example, if the input size is less than 200 we will use 3 pivots, if it is greater than 200 we will use 14 pivots.
-this calculation `ps->a->pivot = array[i * ps->a->capacity / flag]` is used to find the current pivot and we iterate through the stack A to find the numbers that are less than the pivot, if we find a number that is less than the pivot we send it to the stack B, if it is greater we do nothing. That will prepare small chunk of numbers within a range which will redu At the end we sort the stack A using the **lazy_aproximity** to organize the last numbers and push all the numbers that are left.
+this calculation `ps->a->pivot = array[i * ps->a->capacity / flag]` is used to find the current pivot and we iterate through the stack A to find the numbers that are less than the pivot, if we find a number that is less than the pivot we send it to the stack B, if it is greater we do nothing. That will prepare small chunk of numbers within a range. At the end we sort the stack A using the **lazy_aproximity** to organize the last numbers and push all the numbers that are left.
 lastly we have the **stack_it** function that is responsible for finding always the largest number in the stack B and sending it to the stack A.
 After that we set the pivot to the middle of the array and start the quicksort algorithm. We iterate through the array and if the number is less than the pivot we send it to the stack B, if it is greater we do nothing. At the end we sort the stack A using the **aproximity_sort** function and push all the numbers from the stack B to the stack A.
+
+# Conclusion
+That's it! these are what I think the main parts of the code.
+If you read this far, I would like to thank you for your time and attention.
+You can read the entire code in the repository. If you have any questions or suggestions, feel free to contact me.
+And if you want yo suggest any changes or improvements, feel free to open a pull request or dm me.
+
+This project was very challenging, I had to think a lot about the logic and the best way to sort the numbers using the least number of operations possible. I learned a lot about sorting algorithms and how to implement them in a real project. I also learned how to use stacks and how to manipulate them to sort numbers. I am very happy with the result and I am proud of what I have achieved. I hope you enjoyed reading this README and that it was helpful to you. If you have any questions or suggestions, feel free to contact me. Thank you for reading this far and have a great day!
