@@ -399,7 +399,8 @@ After that we set the pivot to the middle of the array and start the quicksort a
 
 # Testing
 This is the visualization for 100 numbers which makes ~700 operations, I think it's pretty good lol.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TaOsICRffCk?si=dxGMY760ZzFuNIo9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TaOsICRffCk?si=ERIet1zaQlLQWOnq&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 This is the visualization for 500 numbers which makes ~7150 operations.
 
